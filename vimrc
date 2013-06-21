@@ -27,11 +27,9 @@ Bundle 'jmartindf/vim-tcomment'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-cucumber'
 Bundle 'slim-template/vim-slim'
-Bundle 'rking/vim-ruby-refactoring'
 Bundle 'tpope/vim-dispatch'
 Bundle 'airblade/vim-gitgutter'
 
@@ -39,22 +37,22 @@ Bundle 'nono/vim-handlebars'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
+Bundle 'jskywalk/nerdtree_search'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'nvie/vim-togglemouse'
 
 Bundle 'vim-scripts/ctags.vim'
-Bundle 'hced/bufkill-vim'
-Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'codegram/vim-haml2slim'
 
-" Default color theme
-Bundle 'sjl/badwolf'
-colorscheme badwolf
+Bundle 'mattn/zencoding-vim'
 
 " ------------
 " VIM SETTINGS
 " ------------
 
+set nu
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -65,7 +63,7 @@ set expandtab
 set foldcolumn=0
 set foldlevel=9
 set foldmethod=indent
-set hidden 
+set hidden
 set history=1000
 set hlsearch
 set ignorecase
@@ -85,7 +83,7 @@ set ruler
 set shell=/bin/bash
 set shiftwidth=2
 set showcmd
-set showmatch 
+set showmatch
 set smartcase
 set tabstop=2
 set softtabstop=2
@@ -300,6 +298,7 @@ let g:syntastic_check_on_open=0
 let g:syntastic_echo_current_error=0
 let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=0
+let g:NERDTreeMouseMode = 3
 
 " Haml2Slim
 nnoremap <leader>h2s :call Haml2Slim(bufname("%"))<CR>
@@ -320,7 +319,7 @@ if &term =~ '256color'
 endif
 let g:clojure_align_multiline_strings = 1
 
-colorscheme badwolf
+colorscheme default
 
 nmap gh <Plug>GitGutterNextHunk
 nmap gH <Plug>GitGutterPrevHunk
@@ -328,12 +327,3 @@ nmap gH <Plug>GitGutterPrevHunk
 syntax on
 filetype indent plugin on
 
-" Vim dispatch
-autocmd FileType ruby
-      \ if expand('%') =~# '_test\.rb$' |
-      \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
-      \ elseif expand('%') =~# '_spec\.rb$' |
-      \   compiler rspec | setl makeprg=bundle\ exec\ rspec\ \"%:p\" |
-      \ else |
-      \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
-      \ endif
